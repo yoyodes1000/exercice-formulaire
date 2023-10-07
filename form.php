@@ -63,6 +63,29 @@
         </div>
         
 
+        <?php 
+    
+    $errors = [];
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST') { 
+        if(!isset($_POST['prenom']) || trim($_POST['prenom']) === '') 
+            $errors[] = "Le prénom est obligatoire";
+            if(!isset($_POST['nom']) || trim($_POST['nom']) === '') 
+            $errors[] = "Le nom est obligatoire";
+        if(!isset($_POST['telephone']) || trim($_POST['telephone']) === '') 
+            $errors[] = "Le numéro de téléphone est obligatoire";
+        if(!isset($_POST['mail']) || trim($_POST['mail']) === '' || filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) 
+            $errors[] = "L'adresse mail est obligatoire";
+        if(!isset($_POST['sujet']) || trim($_POST['sujet']) === '') 
+            $errors[] = "Il faut choisir un sujet";
+        if(!isset($_POST['message']) || trim($_POST['message']) === '') 
+            $errors[] = "Un message est obligatoire et fait toujours plaisir";
+    }
+
+
+    
+    ?>
+
     </form>
 </body>
 </html>
